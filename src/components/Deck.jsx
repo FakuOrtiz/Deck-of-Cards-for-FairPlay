@@ -1,19 +1,23 @@
 import React from "react";
+import { useState } from "react";
 import deckImg from "../assets/deck.png";
 import styles from "./styles/Deck.module.css";
 
-const Deck = ({
-  cards,
-  currentCard,
-  queens,
-  drawedCards,
-  setSeeDrawed,
-  drawCard,
-  handleReload,
-}) => {
-  let handleDraw = () => {
-    drawCard();
-  };
+const Deck = ({ cards, currentCard, queens, drawedCards, setSeeDrawed, handleDraw, handleReload }) => {
+  
+  const [debounce, setDebounce] = useState(true);
+
+
+  let handleClick = () => {
+    if (!debounce) {
+      return;
+    }
+    handleDraw();
+    // setDebounce(false)
+    // setTimeout(() => {
+    //   setDebounce(true)
+    // }, 1000);
+  }
 
   return (
     <div>
@@ -23,7 +27,7 @@ const Deck = ({
             {cards.length > 0 && <img src={deckImg} alt="Deck" width={380} />}
           </div>
           <div className={styles.containerButtons}>
-            <button disabled={queens.length === 4} onClick={handleDraw}>
+            <button disabled={queens.length === 4} onClick={handleClick}>
               Draw card
             </button>
             <button disabled={queens.length < 4} onClick={handleReload}>
