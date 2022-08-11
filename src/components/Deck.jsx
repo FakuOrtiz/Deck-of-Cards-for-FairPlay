@@ -55,7 +55,7 @@ const Deck = ({
         </div>
         <div className={styles.containerCurrentQueens}>
           <div className={styles.containerCurrent}>
-            <h3>Current card (Drawed cards: {drawedCards.length})</h3>
+            <h3>Current card (Drawed cards: {drawedCards.length}/52)</h3>
             {currentCard && (
               <img
                 src={currentCard.image}
