@@ -45,10 +45,10 @@ const Cards = ({ queens, drawedCards, handleReload }) => {
     c.suit = null;
   });
 
-  spades.length > 0 && handleSort(spades);
-  diamonds.length > 0 && handleSort(diamonds);
-  hearts.length > 0 && handleSort(hearts);
-  clubs.length > 0 && handleSort(clubs);
+  handleSort(spades);
+  handleSort(diamonds);
+  handleSort(hearts);
+  handleSort(clubs);
 
   return (
     <div className={styles.containerDrawed}>
@@ -57,10 +57,10 @@ const Cards = ({ queens, drawedCards, handleReload }) => {
           RELOAD
         </button>
       </div>
-      <div>
+      <div className={styles.containerCards}>
         <div>
           <h3>♥ HEARTS ♥ ({hearts.length})</h3>
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div className={styles.containerImg}>
             {hearts?.map((c) => (
               <img className={styles.card} src={c.image} key={c.code} />
             ))}
@@ -68,7 +68,7 @@ const Cards = ({ queens, drawedCards, handleReload }) => {
         </div>
         <div>
           <h3>♦ DIAMONDS ♦ ({diamonds.length})</h3>
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div className={styles.containerImg}>
             {diamonds?.map((c) => (
               <img className={styles.card} src={c.image} key={c.code} />
             ))}
@@ -76,7 +76,7 @@ const Cards = ({ queens, drawedCards, handleReload }) => {
         </div>
         <div>
           <h3>♠ SPADES ♠ ({spades.length})</h3>
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div className={styles.containerImg}>
             {spades?.map((c) => (
               <img className={styles.card} src={c.image} key={c.code} />
             ))}
@@ -84,7 +84,7 @@ const Cards = ({ queens, drawedCards, handleReload }) => {
         </div>
         <div>
           <h3>♣ CLUBS ♣ ({clubs.length})</h3>
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div className={styles.containerImg}>
             {clubs?.map((c) => (
               <img className={styles.card} src={c.image} key={c.code} />
             ))}

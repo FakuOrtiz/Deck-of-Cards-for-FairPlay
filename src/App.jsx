@@ -2,7 +2,6 @@ import useCards from "./hooks/useCards";
 import Loading from "./components/Loading";
 import Cards from "./components/Cards";
 import { useEffect, useState } from "react";
-import "./App.css";
 import Deck from "./components/Deck";
 
 function App() {
