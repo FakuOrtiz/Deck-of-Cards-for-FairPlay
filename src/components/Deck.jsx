@@ -33,11 +33,12 @@ const Deck = ({
             {cards.length > 0 && <img src={deckImg} alt="Deck" width={380} />}
           </div>
           <div className={styles.task}>
-            For win, you must draw a QUEEN of every suit.
+            For win, you must draw a QUEEN of every suit. <br />
+            (One draw/second)
           </div>
           <div className={styles.containerButtons}>
             <button disabled={queens.length === 4} onClick={handleClick}>
-              {queens.length === 4 ? "YOU WIN!" : "Draw card" }
+              {queens.length === 4 ? "YOU WIN!" : "Draw card"}
             </button>
             <button disabled={queens.length < 4} onClick={handleReload}>
               RELOAD
