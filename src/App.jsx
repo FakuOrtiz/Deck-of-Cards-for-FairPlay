@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const { cards, currentCard, getCards, drawCard } = useCards();
+  const { cards, currentCard, drawedCards, queens, getCards, drawCard, reloadCards } = useCards();
 
   useEffect(() => {
     getCards();
@@ -15,7 +15,14 @@ function App() {
 
   return (
     <div className="App">
-      <Cards cards={cards} drawCard={drawCard} currentCard={currentCard} />
+      <Cards
+        cards={cards}
+        drawCard={drawCard}
+        currentCard={currentCard}
+        queens={queens}
+        drawedCards={drawedCards}
+        reloadCards={reloadCards}
+      />
     </div>
   );
 }
