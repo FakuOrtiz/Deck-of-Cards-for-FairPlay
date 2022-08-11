@@ -3,21 +3,27 @@ import { useState } from "react";
 import deckImg from "../assets/deck.png";
 import styles from "./styles/Deck.module.css";
 
-const Deck = ({ cards, currentCard, queens, drawedCards, setSeeDrawed, handleDraw, handleReload }) => {
-  
+const Deck = ({
+  cards,
+  currentCard,
+  queens,
+  drawedCards,
+  setSeeDrawed,
+  handleDraw,
+  handleReload,
+}) => {
   const [debounce, setDebounce] = useState(true);
-
 
   let handleClick = () => {
     if (!debounce) {
       return;
     }
     handleDraw();
-    // setDebounce(false)
-    // setTimeout(() => {
-    //   setDebounce(true)
-    // }, 1000);
-  }
+    setDebounce(false);
+    setTimeout(() => {
+      setDebounce(true);
+    }, 1000);
+  };
 
   return (
     <div>
@@ -26,9 +32,12 @@ const Deck = ({ cards, currentCard, queens, drawedCards, setSeeDrawed, handleDra
           <div>
             {cards.length > 0 && <img src={deckImg} alt="Deck" width={380} />}
           </div>
+          <div className={styles.task}>
+            For win, you must draw a QUEEN of every suit.
+          </div>
           <div className={styles.containerButtons}>
             <button disabled={queens.length === 4} onClick={handleClick}>
-              Draw card
+              {queens.length === 4 ? "YOU WIN!" : "Draw card" }
             </button>
             <button disabled={queens.length < 4} onClick={handleReload}>
               RELOAD
@@ -57,7 +66,7 @@ const Deck = ({ cards, currentCard, queens, drawedCards, setSeeDrawed, handleDra
           </div>
           <div className={styles.containerQueens}>
             <h3>Queens</h3>
-            <div style={{ display: "flex", gap: "10px" }}>
+            <div className={styles.containerImg}>
               {queens?.map((q) => (
                 <img
                   className={styles.card2}
