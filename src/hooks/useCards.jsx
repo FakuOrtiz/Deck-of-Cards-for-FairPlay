@@ -34,7 +34,7 @@ const useCards = () => {
 
   if (currentCard?.value === "QUEEN") {
     setQueens((prevQueens) => [...prevQueens, currentCard]);
-    setCurrentCard(null);
+    setCurrentCard({...currentCard, value: null})
   }
 
   return {
